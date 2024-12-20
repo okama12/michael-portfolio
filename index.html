@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <!-- Add GSAP for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/lightgallery.min.css">    
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/swiper.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+    :root {
+        --black: #000000;
+        --white: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: var(--black);
+        color: var(--white);
+        overflow-x: hidden;
+    }
+
+    
+      .site-navbar {
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+}
+
+/* Header scroll styles */
+.site-navbar {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: transparent;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+/* Gallery section title styles */
+.gallery-title-container {
+    position: relative;
+    padding-top: 100px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.gallery-background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 130px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.03);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.gallery-title {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.gallery-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.gallery-divider {
+    width: 80px;
+    height: 3px;
+    background: #e6c08f;
+    margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+    .gallery-background-text {
+        font-size: 80px;
+    }
+    
+    .gallery-title {
+        font-size: 2rem;
+    }
+}
+
+.site-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  opacity: 0.7;
+}
+
+.nav-menu li a sup {
+  font-size: 0.6rem;
+  margin-left: 1px;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 15px;
+  position: fixed; /* Change from relative to fixed */
+  right: 20px;     /* Add right position */
+  top: 20px;       /* Add top position */
+  z-index: 2000;   /* Increase z-index to ensure it's above other elements */
+  margin: 0;       /* Remove any margin */
+}
+
+@media (max-width: 1200px) {
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Navigation Styles */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 80px 20px 20px;
+  z-index: 1000;
+}
+
+/* Adjust the mobile nav to match the new z-index hierarchy */
+.mobile-nav {
+  z-index: 1999; /* Just below the hamburger menu */
+}
+
+.mobile-nav.active {
+  display: block;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  opacity: 0.7;
+}
+
+.contact-icon {
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.contact-icon:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Menu Styles */
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-btn span:first-child {
+  top: 0;
+}
+
+.menu-btn span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-btn span:last-child {
+  bottom: 0;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 2rem;
+  display: none;
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu li {
+  margin-bottom: 1rem;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+  .site-navbar {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-navbar {
+    padding: 1rem;
+  }
+}
+
+.hero-section {
+    min-height: 100vh;
+    background-color: var(--black);
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    padding-top: 52vh;
+    position: relative;
+    z-index: 1;
+    width: 50%;
+}
+
+.name-background {
+    position: absolute;
+    top: 32%;
+    left: 87px;
+    transform: translateY(-50%);
+    font-size: 12vw;
+    font-weight: 700;
+    line-height: 0.9;
+    white-space: nowrap;
+    opacity: 0.15;
+    color: var(--white);
+    z-index: 0;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-location {
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hero-available {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.hero-secondary {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.hero-videographer {
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+.hero-image-container {
+    position: absolute;
+    right: 4rem;
+    bottom: 0;
+    width: 41%;
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+}
+
+.line {
+    width: 100px;
+    height: 2px;
+    background-color: var(--white);
+    margin: 2rem 0;
+}
+
+/* Mobile Navigation */
+.site-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100vh;
+}
+
+.js-menu-toggle {
+    display: none;
+}
+
+    
+
+@media screen and (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        padding: 80px 1.5rem 0;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding-top: 30vh;
+    }
+
+    .name-background {
+        font-size: 16vw;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-title, .hero-videographer {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .line {
+        margin: 2rem auto;
+    }
+
+    .hero-image-container {
+        position: relative;
+        right: auto;
+        width: 80%;
+        margin: 2rem auto;
+    }
+
+    /* Mobile Navigation */
+    .js-menu-toggle {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 2001;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .site-mobile-menu.active {
+        display: block;
+    }
+
+    .site-navigation {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-section {
+        padding: 60px 1rem 0;
+    }
+
+    .hero-title, .hero-videographer {
+        font-size: 2rem;
+    }
+
+    .hero-location, .hero-available, .hero-secondary {
+        font-size: 0.9rem;
+    }
+
+    .name-background {
+        font-size: 18vw;
+        top: 12%;
+    }
+
+    .hero-image-container {
+        width: 90%;
+        margin-top: 1.5rem;
+    }
+
+    .line {
+        margin: 1.5rem auto;
+    }
+}
+/* WhatsApp Button Styles */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    background-color: #20ba57;
+}
+
+.whatsapp-icon {
+    font-size: 32px;
+}
+
+/* Media Query for mobile devices */
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-icon {
+        font-size: 28px;
+    }
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 120px 0;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Artistic Background */
+.artistic-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.circle-1, .circle-2 {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+}
+
+.circle-2 {
+    width: 600px;
+    height: 600px;
+    bottom: -200px;
+    right: -200px;
+}
+
+.line-decor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.03) 55%, transparent 55%);
+}
+
+/* Container */
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Image Column */
+.image-stack {
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+.image-frame {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #111;
+    padding: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.main-image {
+    width: 80%;
+    height: auto;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.accent-image {
+    width: 60%;
+    height: auto;
+    bottom: 50px;
+    left: 0;
+    z-index: 1;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: transform 0.6s ease;
+}
+
+.image-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* Content Column */
+.content-wrapper {
+    padding-right: 40px;
+}
+
+.overline {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.6);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.about-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #e6c08f;
+    position: relative;
+    display: inline-block;
+}
+
+.about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e6c08f;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Specialties */
+.specialties {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.specialty {
+    padding: 12px 20px;
+    background: rgba(230,192,143,0.1);
+    border-radius: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #e6c08f;
+    transition: all 0.3s ease;
+}
+
+.specialty:hover {
+    background: rgba(230,192,143,0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .about-container {
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .image-stack {
+        height: 500px;
+    }
+    
+    .about-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-section {
+        padding: 80px 0;
+    }
+    
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .image-stack {
+        height: 400px;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    
+    .content-wrapper {
+        padding-right: 0;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .stats-grid {
+        max-width: 600px;
+        margin: 40px auto;
+    }
+    
+    .specialties {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-container {
+        padding: 0 15px;
+    }
+    
+    .image-stack {
+        height: 350px;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .specialties {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-stack {
+        height: 300px;
+    }
+    
+    .about-title {
+        font-size: 1.8rem;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+    }
+}
+
+/* Gallery Section Styles */
+.gallery-section {
+    padding: 100px 0;
+    background-color: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.image-wrap-2 {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-wrap-2:hover {
+    transform: translateY(-5px);
+}
+
+.image-wrap-2 img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.image-wrap-2:hover img {
+    transform: scale(1.1);
+}
+
+.image-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-wrap-2:hover .image-info {
+    opacity: 1;
+}
+
+.image-info h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.image-wrap-2:hover .image-info h2 {
+    transform: translateY(0);
+}
+
+.btn-outline-white {
+    color: white;
+    border: 2px solid white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+}
+
+.image-wrap-2:hover .btn-outline-white {
+    transform: translateY(0);
+}
+
+.btn-outline-white:hover {
+    background: white;
+    color: black;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .image-wrap-2 img {
+        height: 350px;
+    }
+    
+    .image-info h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 60px 0;
+    }
+    
+    .image-wrap-2 img {
+        height: 300px;
+    }
+    
+    .image-info {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .image-info h2,
+    .btn-outline-white {
+        transform: translateY(0);
+    }
+}
+
+/* Gallery Image Hover Styles */
+.image-wrap-2 {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Add border styles */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.image-wrap-2:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.image-wrap-2 img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 4px; /* Slightly rounded corners for the image */
+}
+
+.image-info {
+    position: absolute;
+    top: 8px;  /* Adjust for padding */
+    left: 8px;  /* Adjust for padding */
+    right: 8px; /* Adjust for padding */
+    bottom: 8px; /* Adjust for padding */
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border-radius: 4px; /* Match image border radius */
+}
+
+/* Button styling */
+.btn-outline-white {
+    color: white;
+    border: 2px solid white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover effects */
+.image-wrap-2:hover .image-info {
+    opacity: 1;
+}
+
+.image-wrap-2:hover img {
+    transform: scale(1.1);
+}
+
+.image-wrap-2:hover .btn-outline-white {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Re-enable pointer events on hover */
+}
+
+.btn-outline-white:hover {
+    background: white;
+    color: black;
+}
+
+/* Title styling */
+.image-info h2 {
+    color: white;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.image-wrap-2:hover .image-info h2 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-wrap-2 {
+        padding: 6px; /* Slightly smaller padding on mobile */
+    }
+    
+    .image-wrap-2 img {
+        height: 300px;
+    }
+    
+    .image-info {
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .image-info h2,
+    .btn-outline-white {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Testimonials Section Styles */
+.testimonials-section {
+    padding: 100px 0;
+    background-color: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(230,192,143,0.05) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(230,192,143,0.2);
+}
+
+.quote-icon {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e6c08f;
+}
+
+.author-info h4 {
+    color: white;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.author-info p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+}
+
+/* Swiper Customization */
+.testimonials-slider {
+    padding: 20px 0 40px;
+}
+
+.swiper-container {
+    padding: 20px;
+}
+
+.swiper-pagination {
+    bottom: 0;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #e6c08f;
+}
+
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 60px 0;
+    }
+
+    .testimonial-card {
+        padding: 30px;
+        margin: 10px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+  <!-- Replace the old mobile menu toggle with new hamburger -->
+  <button class="hamburger-menu d-xl-none">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+
+  <!-- <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> -->
+    
+
+
+
+    <header class="site-navbar py-3" role="banner">
+
+      <!-- Add mobile navigation here -->
+<nav class="mobile-nav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="single.html">Gallery</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+      
+      <div class="container-fluid">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-xl-2" data-aos="fade-down">
+            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">MK</a></h1>
+          </div>
+          <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+            <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="has-children">
+                  <a href="single.html">Gallery</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Nature</a></li>
+                    <li><a href="#">Portrait</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Animals</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Travel</a></li>
+                    <li class="has-children">
+                      <a href="#">Sub Menu</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+         <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+  <!-- Desktop social icons -->
+  <div class="d-none d-xl-inline-block">
+    <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+      <li>
+        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+      </li>
+      <li>
+        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+      </li>
+      <li>
+        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+      </li>
+      <li>
+        <a href="#" class="pl-3 pr-3"><span class="icon-youtube-play"></span></a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+        </div>
+      </div>
+      
+    </header>
+
+    
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="name-background">
+          MICHAEL<br> <span class="kashahu mt-2 ">KASHAHU</span>
+      </div>
+     
+      <div class="hero-content">
+          <h2 class="hero-title">Photographer</span></h2>
+          <div class="line"></div>
+          <p class="hero-location">Based in<br>Tanzania, Arusha</p>
+          <p class="hero-available">*AVAILABLE WORLDWIDE</p>
+          <p class="hero-secondary">Also, I'm a</p>
+          <h2 class="hero-videographer">Videographer</h2>
+      </div>
+      
+       <div class="hero-image-container">
+        <img src="images/okama.png" alt="Emmanuel Jason" class="hero-image">
+    </div>
+  </section>
+  <!-- End of Hero Section -->
+
+  <!-- About Section -->
+<section class="about-section">
+  <!-- Artistic Background Elements -->
+  <div class="artistic-bg">
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+      <div class="line-decor"></div>
+  </div>
+
+  <div class="about-container">
+      <!-- Left Column -->
+      <div class="about-image-column" data-aos="fade-right">
+          <div class="image-stack">
+              <div class="image-frame main-image">
+                  <img src="images/nature_small_1.jpg" alt="Main Portrait">
+              </div>
+              <div class="image-frame accent-image" data-aos="fade-up" data-aos-delay="200">
+                  <img src="images/nature_small_4.jpg" alt="In Action">
+              </div>
+          </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="about-content-column" data-aos="fade-left">
+          <div class="content-wrapper">
+              <span class="overline" data-aos="fade-up">About Me</span>
+              <h2 class="about-title" data-aos="fade-up" data-aos-delay="100">Capturing Life's 
+                  <span class="highlight">Beautiful</span> Moments
+              </h2>
+              
+              <p class="about-description" data-aos="fade-up" data-aos-delay="200">
+                  With a passion for visual storytelling, I transform fleeting moments into timeless memories. Based in Tanzania, my lens captures the raw beauty of nature and authentic human connections.
+              </p>
+
+              <div class="stats-grid" data-aos="fade-up" data-aos-delay="300">
+                  <div class="stat-item">
+                      <span class="stat-number">10+</span>
+                      <span class="stat-label">Years Experience</span>
+                  </div>
+                  <div class="stat-item">
+                      <span class="stat-number">250+</span>
+                      <span class="stat-label">Projects Done</span>
+                  </div>
+                  <div class="stat-item">
+                      <span class="stat-number">180+</span>
+                      <span class="stat-label">Happy Clients</span>
+                  </div>
+              </div>
+
+              <div class="specialties" data-aos="fade-up" data-aos-delay="400">
+                  <div class="specialty">Wildlife Photography</div>
+                  <div class="specialty">Portrait Sessions</div>
+                  <div class="specialty">Event Coverage</div>
+                  <div class="specialty">Aerial Photography</div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+ <!-- End of About Section -->
+
+ <!-- Gallery Section -->
+<section class="gallery-section">
+  <div class="container-fluid" data-aos="fade">
+      <!-- Section Header -->
+      <div class="row mb-5">
+          <div class="col-12 text-center">
+              <span class="overline" data-aos="fade-up">My Work</span>
+              <h2 class="about-title" data-aos="fade-up" data-aos-delay="100">
+                  Featured <span class="highlight">Gallery</span>
+              </h2>
+          </div>
+      </div>
+      
+      <!-- Gallery Grid -->
+      <div class="row">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="image-wrap-2">
+                  <div class="image-info">
+                      <h2 class="mb-3">Nature</h2>
+                      <a href="single.html" class="btn btn-outline-white">More Photos</a>
+                  </div>
+                  <img src="images/img_1.jpg" alt="Nature Photography" class="img-fluid">
+              </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="image-wrap-2">
+                  <div class="image-info">
+                      <h2 class="mb-3">Portrait</h2>
+                      <a href="single.html" class="btn btn-outline-white">More Photos</a>
+                  </div>
+                  <img src="images/img_2.jpg" alt="Portrait Photography" class="img-fluid">
+              </div>
+          </div>
+
+          <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">People</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Architecture</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Animals</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_5.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Sports</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_6.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Travel</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_7.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">People</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Architecture</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!-- End of Gallery Section -->
+
+<!-- Testimonial Section -->
+<section class="testimonials-section">
+  <div class="container" data-aos="fade">
+      <!-- Section Header -->
+      <div class="row mb-5">
+          <div class="col-12 text-center">
+              <span class="overline" data-aos="fade-up">Testimonials</span>
+              <h2 class="about-title" data-aos="fade-up" data-aos-delay="100">
+                  What Our <span class="highlight">Clients</span> Say
+              </h2>
+          </div>
+      </div>
+
+      <!-- Testimonials Slider -->
+      <div class="testimonials-slider" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <!-- Testimonial 1 -->
+                  <div class="swiper-slide">
+                      <div class="testimonial-card">
+                          <div class="quote-icon">
+                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
+                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
+                              </svg>
+                          </div>
+                          <p class="testimonial-text">"Michael's ability to capture moments is truly extraordinary. His eye for detail and composition brought our wedding photos to life in ways we never imagined possible."</p>
+                          <div class="testimonial-author">
+                              <img src="images/person_1.jpg" alt="Sarah Johnson" class="author-image">
+                              <div class="author-info">
+                                  <h4>Sarah Johnson</h4>
+                                  <p>Wedding Client</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Testimonial 2 -->
+                  <div class="swiper-slide">
+                      <div class="testimonial-card">
+                          <div class="quote-icon">
+                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
+                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
+                              </svg>
+                          </div>
+                          <p class="testimonial-text">"Working with Michael was an absolute pleasure. His professionalism and creativity made our corporate event coverage stand out. Highly recommended!"</p>
+                          <div class="testimonial-author">
+                              <img src="images/person_2.jpg" alt="David Chen" class="author-image">
+                              <div class="author-info">
+                                  <h4>David Chen</h4>
+                                  <p>Corporate Client</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Testimonial 3 -->
+                  <div class="swiper-slide">
+                      <div class="testimonial-card">
+                          <div class="quote-icon">
+                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
+                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
+                              </svg>
+                          </div>
+                          <p class="testimonial-text">"The wildlife photographs Michael captured during our safari were breathtaking. His patience and expertise in capturing the perfect moment is unmatched."</p>
+                          <div class="testimonial-author">
+                              <img src="images/person_3.jpg" alt="Emma Thompson" class="author-image">
+                              <div class="author-info">
+                                  <h4>Emma Thompson</h4>
+                                  <p>Safari Client</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Add pagination -->
+              <div class="swiper-pagination"></div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Testimonials Slider -->
+
+<!-- ----- Contact Section ------ -->
+<div class="site-section"  data-aos="fade"></div>
+<div class="container">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-7">
+      <div class="row mb-5">
+        <div class="col-12 ">
+          <h2 class="site-section-heading text-center">Contact</h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-8 mb-5">
+      <form action="#">
+
+
+        <div class="row form-group">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-white" for="fname">First Name</label>
+            <input type="text" id="fname" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="text-white" for="lname">Last Name</label>
+            <input type="text" id="lname" class="form-control">
+          </div>
+        </div>
+
+        <div class="row form-group">
+
+          <div class="col-md-12">
+            <label class="text-white" for="email">Email</label> 
+            <input type="email" id="email" class="form-control">
+          </div>
+        </div>
+
+        <div class="row form-group">
+
+          <div class="col-md-12">
+            <label class="text-white" for="subject">Subject</label> 
+            <input type="subject" id="subject" class="form-control">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-12">
+            <label class="text-white" for="message">Message</label> 
+            <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-12">
+            <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+    <div class="col-lg-3 ml-auto">
+      <div class="mb-3">
+        <p class="mb-0 font-weight-bold text-white">Address</p>
+        <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+
+        <p class="mb-0 font-weight-bold text-white">Phone</p>
+        <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+
+        <p class="mb-0 font-weight-bold text-white">Email Address</p>
+        <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- ----- Contact Section ------ -->
+
+
+
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/picturefill.min.js"></script>
+  <script src="js/lightgallery-all.min.js"></script>
+  <script src="js/jquery.mousewheel.min.js"></script>
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
+
+<script>
+  // GSAP Animations
+  window.addEventListener('load', () => {
+      const tl = gsap.timeline();
+      
+      // Navbar animations
+      tl.to('.nav-link', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out'
+      });
+
+      // Background name animation
+      tl.to('.name-background', {
+          opacity: 0.15,
+          duration: 1.5,
+          ease: 'power3.out'
+      }, '-=0.5');
+
+      // Hero content animations
+      tl.to('.hero-title', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.7')
+      .to('.line', {
+          opacity: 1,
+          width: '100px',
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.5')
+      .to('.hero-location', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-available', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-secondary', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-videographer', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-image', {
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power3.out'
+      }, '-=1');
+  });
+</script>
+
+<script>
+  // Initialize Swiper for testimonials
+  document.addEventListener('DOMContentLoaded', function() {
+      const testimonialSwiper = new Swiper('.testimonials-slider .swiper-container', {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+          },
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+          },
+          breakpoints: {
+              768: {
+                  slidesPerView: 2,
+              },
+              1024: {
+                  slidesPerView: 3,
+              },
+          },
+          on: {
+              init: function() {
+                  // Add GSAP animations to testimonial cards
+                  gsap.from('.testimonial-card', {
+                      y: 50,
+                      opacity: 0,
+                      duration: 1,
+                      stagger: 0.2,
+                      ease: 'power3.out',
+                      scrollTrigger: {
+                          trigger: '.testimonials-section',
+                          start: 'top center+=100',
+                      }
+                  });
+              },
+          },
+      });
+  });
+  </script>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.js-menu-toggle');
+    const mobileMenu = document.querySelector('.site-mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+});
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      
+      // Animate hamburger
+      const spans = this.querySelectorAll('span');
+      if (this.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  
+    // Close mobile nav when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        hamburger.classList.remove('active');
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+  });
+  </script>
+
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+    easing: 'ease-out-cubic'
+  });
+
+  // Additional custom animations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Animate numbers on scroll
+    const numbers = document.querySelectorAll('.specialty-number');
+    const animateNumber = (element, target) => {
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          clearInterval(timer);
+          current = target;
+        }
+        element.textContent = Math.floor(current) + '+';
+      }, 30);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.textContent);
+          animateNumber(entry.target, target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    numbers.forEach(number => observer.observe(number));
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let lastScroll = 0;
+    const navbar = document.querySelector('.site-navbar');
+    const threshold = 50; // minimum scroll amount before hiding
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Determine scroll direction
+        if (currentScroll > lastScroll && currentScroll > threshold) {
+            // Scrolling down
+            navbar.classList.add('navbar-hidden');
+        } else {
+            // Scrolling up
+            navbar.classList.remove('navbar-hidden');
+        }
+        
+        lastScroll = currentScroll;
+    });
+});
+</script>
+
+
+
+<a href="https://wa.me/+255653431529" class="whatsapp-btn" target="_blank">
+  <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+</body>
+</html>

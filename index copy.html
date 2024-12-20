@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <!-- Add GSAP for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/lightgallery.min.css">    
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/swiper.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+    :root {
+        --black: #000000;
+        --white: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: var(--black);
+        color: var(--white);
+        overflow-x: hidden;
+    }
+
+    .site-navbar {
+  padding: 2rem 4rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+.site-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  opacity: 0.7;
+}
+
+.nav-menu li a sup {
+  font-size: 0.6rem;
+  margin-left: 1px;
+}
+
+.contact-icon {
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.contact-icon:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Menu Styles */
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-btn span:first-child {
+  top: 0;
+}
+
+.menu-btn span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-btn span:last-child {
+  bottom: 0;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 2rem;
+  display: none;
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu li {
+  margin-bottom: 1rem;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+  .site-navbar {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-navbar {
+    padding: 1rem;
+  }
+}
+
+    .hero-section {
+        min-height: 100vh;
+        background-color: var(--black);
+        padding: 0 4rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        padding-top: 15vh;
+        position: relative;
+        z-index: 1;
+    }
+
+    .name-background {
+        position: absolute;
+        top: 32%;
+        left: 87px;
+        transform: translateY(-50%);
+        font-size: 12vw;
+        font-weight: 700;
+        line-height: 0.9;
+        white-space: nowrap;
+        opacity: 0;
+        color: var(--white);
+        z-index: 0;
+    }
+
+    .name-background, .kashahu {
+      left: 20px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        transform: translateY(30px);
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-location {
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        opacity: 0;
+    }
+
+    .hero-available {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        opacity: 0;
+    }
+
+    .hero-secondary {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        opacity: 0;
+    }
+
+    .hero-videographer {
+        font-size: 3.5rem;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .hero-image-container {
+        position: absolute;
+        right: 4rem;
+        bottom: 0;
+        width: 45%;
+        z-index: 1;
+    }
+
+    .hero-image {
+        width: 100%;
+        opacity: 0;
+    }
+
+    .line {
+        width: 100px;
+        height: 2px;
+        background-color: var(--white);
+        margin: 2rem 0;
+        opacity: 0;
+    }
+
+    .text-break {
+        display: block;
+    }
+
+    @media (max-width: 991px) {
+        .hero-section {
+            padding: 0 2rem;
+        }
+        .name-background {
+            font-size: 15vw;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            right: 0;
+            margin-top: 2rem;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+
+
+
+    <nav class="site-navbar">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!-- Logo -->
+          <div class="col-6 col-xl-2">
+            <div class="site-logo">
+              <svg viewBox="0 0 40 40" class="logo-svg">
+                <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none"/>
+                <line x1="20" y1="10" x2="20" y2="30" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+    
+          <!-- Main Navigation -->
+          <div class="col-6 col-xl-8">
+            <div class="main-nav d-none d-xl-block">
+              <ul class="nav-menu">
+                <li><a href="index.html">Home<sup>1</sup></a></li>
+                <li><a href="projects.html">Projects<sup>2</sup></a></li>
+                <li><a href="about.html">About<sup>3</sup></a></li>
+                <li><a href="workshop.html">Workshop<sup>4</sup></a></li>
+              </ul>
+            </div>
+          </div>
+    
+          <!-- Contact Icon -->
+          <div class="col-6 col-xl-2 text-right">
+            <a href="#contact" class="contact-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-toggle d-xl-none">
+              <button class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <div class="mobile-menu d-xl-none">
+        <ul>
+          <li><a href="index.html">Home<sup>1</sup></a></li>
+          <li><a href="projects.html">Projects<sup>2</sup></a></li>
+          <li><a href="about.html">About<sup>3</sup></a></li>
+          <li><a href="workshop.html">Workshop<sup>4</sup></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="name-background">
+          MICHAEL<br> <span class="kashahu mt-2 ">KASHAHU</span>
+      </div>
+      <div class="hero-content">
+          <h2 class="hero-title">Photo<span class="text-break">grapher</span></h2>
+          <div class="line"></div>
+          <p class="hero-location">Based in<br>Santa Clara, CA</p>
+          <p class="hero-available">*AVAILABLE WORLDWIDE</p>
+          <p class="hero-secondary">Also, I'm a</p>
+          <h2 class="hero-videographer">Videographer</h2>
+      </div>
+      <div class="hero-image-container">
+          <img src="images/okama.png" alt="Emmanuel Jason" class="hero-image" style="width: 745px;
+  height: 1052px;">
+      </div>
+  </section>
+
+
+<!-- ........... Gaallery Section ........... -->
+    <div class="container-fluid mt-4" data-aos="fade" data-aos-delay="500">
+      <div class="row">
+        <div class="col-lg-4">
+
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Nature</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/okama.png" alt="Image" class="img-fluid">
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Portrait</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">People</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Architecture</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Animals</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_5.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Sports</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_6.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Travel</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_7.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">People</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">Architecture</h2>
+              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+            </div>
+            <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- ........... End of  Gaallery Section ........... -->
+
+
+
+
+    <!-- ----- Contact Section ------ -->
+    <div class="site-section"  data-aos="fade"></div>
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">Contact</h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-8 mb-5">
+            <form action="#">
+
+
+              <div class="row form-group">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label class="text-white" for="fname">First Name</label>
+                  <input type="text" id="fname" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="text-white" for="lname">Last Name</label>
+                  <input type="text" id="lname" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-white" for="email">Email</label> 
+                  <input type="email" id="email" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-white" for="subject">Subject</label> 
+                  <input type="subject" id="subject" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="text-white" for="message">Message</label> 
+                  <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+          <div class="col-lg-3 ml-auto">
+            <div class="mb-3">
+              <p class="mb-0 font-weight-bold text-white">Address</p>
+              <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+
+              <p class="mb-0 font-weight-bold text-white">Phone</p>
+              <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+
+              <p class="mb-0 font-weight-bold text-white">Email Address</p>
+              <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- ----- Contact Section ------ -->
+
+    
+
+    
+
+    
+    
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/picturefill.min.js"></script>
+  <script src="js/lightgallery-all.min.js"></script>
+  <script src="js/jquery.mousewheel.min.js"></script>
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
+
+<script>
+  // GSAP Animations
+  window.addEventListener('load', () => {
+      const tl = gsap.timeline();
+      
+      // Navbar animations
+      tl.to('.nav-link', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out'
+      });
+
+      // Background name animation
+      tl.to('.name-background', {
+          opacity: 0.15,
+          duration: 1.5,
+          ease: 'power3.out'
+      }, '-=0.5');
+
+      // Hero content animations
+      tl.to('.hero-title', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.7')
+      .to('.line', {
+          opacity: 1,
+          width: '100px',
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.5')
+      .to('.hero-location', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-available', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-secondary', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-videographer', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+      }, '-=0.3')
+      .to('.hero-image', {
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power3.out'
+      }, '-=1');
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    let isMenuOpen = false;
+  
+    menuBtn.addEventListener('click', function() {
+      isMenuOpen = !isMenuOpen;
+      mobileMenu.classList.toggle('active');
+      
+      // Animate burger menu
+      const spans = this.querySelectorAll('span');
+      if (isMenuOpen) {
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  });
+  </script>
+
+</body>
+</html>
