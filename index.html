@@ -11,6 +11,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
+
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
@@ -1070,52 +1072,72 @@
     }
 }
 
-/* Testimonials Section Styles */
-.testimonials-section {
+/* Testimonial Section Styles */
+.testimonial-section {
     padding: 100px 0;
     background-color: var(--black);
     position: relative;
     overflow: hidden;
 }
 
-.testimonials-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(230,192,143,0.05) 0%, transparent 100%);
-    pointer-events: none;
+.testimonial-wrapper {
+    margin-top: 60px;
+    position: relative;
+}
+
+.testimonial-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 20px 0;
+}
+
+.testimonial-slider::-webkit-scrollbar {
+    display: none;
 }
 
 .testimonial-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: all 0.5s ease;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.testimonial-content {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px;
-    margin: 20px;
+    position: relative;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
-.testimonial-card:hover {
+.testimonial-content:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(230,192,143,0.2);
 }
 
 .quote-icon {
+    color: #e6c08f;
+    opacity: 0.3;
     margin-bottom: 20px;
-    opacity: 0.8;
 }
 
 .testimonial-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
     color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 30px;
-    font-style: italic;
 }
 
 .testimonial-author {
@@ -1124,12 +1146,17 @@
     gap: 15px;
 }
 
-.author-image {
+.author-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 2px solid #e6c08f;
 }
 
 .author-info h4 {
@@ -1144,40 +1171,463 @@
     font-size: 0.9rem;
 }
 
-/* Swiper Customization */
-.testimonials-slider {
-    padding: 20px 0 40px;
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
 }
 
-.swiper-container {
-    padding: 20px;
-}
-
-.swiper-pagination {
-    bottom: 0;
-}
-
-.swiper-pagination-bullet {
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #e6c08f;
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonial-card {
+        flex: 0 0 calc(33.333% - 20px);
+    }
+}
+
+
+
+/* Contact Section Styles */
+.contact-section {
+    padding: 100px 0;
+    background-color: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+/* Contact Info Cards */
+.contact-info {
+    display: grid;
+    gap: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(230,192,143,0.2);
+}
+
+.info-card .icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(230,192,143,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: #e6c08f;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .icon {
+    background: rgba(230,192,143,0.2);
+    transform: scale(1.1);
+}
+
+.info-card h3 {
+    color: white;
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.info-card p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Contact Form */
+.contact-form {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #e6c08f;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 0.8rem;
+    color: #e6c08f;
+}
+
+.submit-btn {
+    background: #e6c08f;
+    color: var(--black);
+    border: none;
+    border-radius: 30px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+}
+
+.submit-btn:hover {
+    background: #d4ae7c;
+    transform: translateY(-2px);
+}
+
+.submit-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 60px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.fade-in.active {
     opacity: 1;
 }
 
-.swiper-pagination-bullet-active {
-    background: #e6c08f;
+/* Footer Styles */
+.footer-section {
+    background-color: var(--black);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 0;
 }
 
-@media (max-width: 768px) {
-    .testimonials-section {
-        padding: 60px 0;
+.footer-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Main Footer Content */
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Company Info */
+.footer-brand {
+    max-width: 400px;
+}
+
+.brand-name {
+    color: white;
+    font-size: 2rem;
+    margin: 0 0 20px;
+}
+
+.brand-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e6c08f;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(230, 192, 143, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Footer Links Groups */
+.footer-links-group h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #e6c08f;
+    transform: translateX(5px);
+}
+
+/* Newsletter */
+.footer-newsletter {
+    max-width: 400px;
+}
+
+.footer-newsletter h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+}
+
+.footer-newsletter p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.newsletter-form .form-group {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #e6c08f;
+}
+
+.subscribe-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #e6c08f;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background: #d4ae7c;
+    transform: translateX(3px);
+}
+
+.subscribe-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--black);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.copyright p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #e6c08f;
+}
+
+/* Background Animation */
+.footer-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(230, 192, 143, 0.05), transparent);
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .testimonial-card {
-        padding: 30px;
-        margin: 10px;
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
+}
 
-    .testimonial-text {
-        font-size: 1rem;
+@media (min-width: 1024px) {
+    .footer-main {
+        grid-template-columns: 2fr 1fr 1fr 2fr;
     }
 }
 </style>
@@ -1478,177 +1928,314 @@
 <!-- End of Gallery Section -->
 
 <!-- Testimonial Section -->
-<section class="testimonials-section">
-  <div class="container" data-aos="fade">
+<section class="testimonial-section">
+  <div class="container">
       <!-- Section Header -->
-      <div class="row mb-5">
-          <div class="col-12 text-center">
-              <span class="overline" data-aos="fade-up">Testimonials</span>
-              <h2 class="about-title" data-aos="fade-up" data-aos-delay="100">
-                  What Our <span class="highlight">Clients</span> Say
-              </h2>
-          </div>
+      <div class="section-header" data-aos="fade-up">
+          <span class="overline">Testimonials</span>
+          <h2 class="section-title">What Our <span class="highlight">Clients</span> Say</h2>
       </div>
 
-      <!-- Testimonials Slider -->
-      <div class="testimonials-slider" data-aos="fade-up" data-aos-delay="200">
-          <div class="swiper-container">
-              <div class="swiper-wrapper">
-                  <!-- Testimonial 1 -->
-                  <div class="swiper-slide">
-                      <div class="testimonial-card">
-                          <div class="quote-icon">
-                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
-                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
-                              </svg>
-                          </div>
-                          <p class="testimonial-text">"Michael's ability to capture moments is truly extraordinary. His eye for detail and composition brought our wedding photos to life in ways we never imagined possible."</p>
-                          <div class="testimonial-author">
-                              <img src="images/person_1.jpg" alt="Sarah Johnson" class="author-image">
-                              <div class="author-info">
-                                  <h4>Sarah Johnson</h4>
-                                  <p>Wedding Client</p>
-                              </div>
-                          </div>
+      <div class="testimonial-wrapper">
+          <div class="testimonial-slider" id="testimonialSlider">
+              <!-- Testimonial Card 1 -->
+              <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                  <div class="testimonial-content">
+                      <div class="quote-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M11.3,6.2H9.6c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9 c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z M21.2,6.2h-1.7c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4 c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z"></path>
+                          </svg>
                       </div>
-                  </div>
-
-                  <!-- Testimonial 2 -->
-                  <div class="swiper-slide">
-                      <div class="testimonial-card">
-                          <div class="quote-icon">
-                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
-                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
-                              </svg>
+                      <p class="testimonial-text">"Working with this team has been an absolute pleasure. Their attention to detail and creative approach brought our vision to life in ways we couldn't have imagined."</p>
+                      <div class="testimonial-author">
+                          <div class="author-avatar">
+                              <img src="images/person_1.jpg" alt="Sarah Johnson">
                           </div>
-                          <p class="testimonial-text">"Working with Michael was an absolute pleasure. His professionalism and creativity made our corporate event coverage stand out. Highly recommended!"</p>
-                          <div class="testimonial-author">
-                              <img src="images/person_2.jpg" alt="David Chen" class="author-image">
-                              <div class="author-info">
-                                  <h4>David Chen</h4>
-                                  <p>Corporate Client</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- Testimonial 3 -->
-                  <div class="swiper-slide">
-                      <div class="testimonial-card">
-                          <div class="quote-icon">
-                              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                                  <path d="M10 11H6C4.9 11 4 10.1 4 9V8C4 6.9 4.9 6 6 6H7C7.6 6 8 5.6 8 5V4C8 3.4 7.6 3 7 3H6C3.2 3 1 5.2 1 8V9V19C1 20.1 1.9 21 3 21H9C10.1 21 11 20.1 11 19V13C11 11.9 10.1 11 10 11Z" fill="#e6c08f"/>
-                                  <path d="M22 11H18C16.9 11 16 10.1 16 9V8C16 6.9 16.9 6 18 6H19C19.6 6 20 5.6 20 5V4C20 3.4 19.6 3 19 3H18C15.2 3 13 5.2 13 8V9V19C13 20.1 13.9 21 15 21H21C22.1 21 23 20.1 23 19V13C23 11.9 22.1 11 22 11Z" fill="#e6c08f"/>
-                              </svg>
-                          </div>
-                          <p class="testimonial-text">"The wildlife photographs Michael captured during our safari were breathtaking. His patience and expertise in capturing the perfect moment is unmatched."</p>
-                          <div class="testimonial-author">
-                              <img src="images/person_3.jpg" alt="Emma Thompson" class="author-image">
-                              <div class="author-info">
-                                  <h4>Emma Thompson</h4>
-                                  <p>Safari Client</p>
-                              </div>
+                          <div class="author-info">
+                              <h4>Sarah Johnson</h4>
+                              <p>CEO, Tech Innovators</p>
                           </div>
                       </div>
                   </div>
               </div>
-              <!-- Add pagination -->
-              <div class="swiper-pagination"></div>
+
+              <!-- Testimonial Card 2 -->
+              <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                  <div class="testimonial-content">
+                      <div class="quote-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M11.3,6.2H9.6c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9 c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z M21.2,6.2h-1.7c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4 c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z"></path>
+                          </svg>
+                      </div>
+                      <p class="testimonial-text">"The level of professionalism and expertise displayed throughout our project was exceptional. They delivered beyond our expectations and on time."</p>
+                      <div class="testimonial-author">
+                          <div class="author-avatar">
+                              <img src="images/person_2.jpg" alt="Michael Chen">
+                          </div>
+                          <div class="author-info">
+                              <h4>Michael Chen</h4>
+                              <p>Marketing Director, Global Solutions</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Testimonial Card 3 -->
+              <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                  <div class="testimonial-content">
+                      <div class="quote-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M11.3,6.2H9.6c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9 c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z M21.2,6.2h-1.7c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4 c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z"></path>
+                          </svg>
+                      </div>
+                      <p class="testimonial-text">"Their innovative approach and dedication to quality made all the difference. We've received countless compliments on the final result."</p>
+                      <div class="testimonial-author">
+                          <div class="author-avatar">
+                              <img src="images/person_3.jpg" alt="Emily Rodriguez">
+                          </div>
+                          <div class="author-info">
+                              <h4>Emily Rodriguez</h4>
+                              <p>Creative Director, Design Studio</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <!-- Testimonial Card 4 -->
+              <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.3,6.2H9.6c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9 c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z M21.2,6.2h-1.7c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4 c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z"></path>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"The level of professionalism and expertise displayed throughout our project was exceptional. They delivered beyond our expectations and on time."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/person_4.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Marketing Director, Global Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Card 5 -->
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="testimonial-content">
+                  <div class="quote-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M11.3,6.2H9.6c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9 c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z M21.2,6.2h-1.7c-0.1-1.8-1.6-3.2-3.4-3.2c-1.9,0-3.4,1.5-3.4,3.4 c0,1.9,1.5,3.4,3.4,3.4c0.6,0,1.2-0.2,1.7-0.5l0,0.9c0,1.9-1.5,3.4-3.4,3.4v1.7c2.8,0,5.1-2.3,5.1-5.1V6.2z"></path>
+                      </svg>
+                  </div>
+                  <p class="testimonial-text">"The level of professionalism and expertise displayed throughout our project was exceptional. They delivered beyond our expectations and on time."</p>
+                  <div class="testimonial-author">
+                      <div class="author-avatar">
+                          <img src="images/person_5.jpg" alt="Michael Chen">
+                      </div>
+                      <div class="author-info">
+                          <h4>Michael Chen</h4>
+                          <p>Marketing Director, Global Solutions</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          </div>
+
+          <!-- Navigation Dots -->
+          <div class="testimonial-dots" id="testimonialDots"></div>
+      </div>
+  </div>
+</section>
+<!-- End of Testimonials Slider -->
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="container">
+      <!-- Section Header -->
+      <div class="section-header" data-aos="fade-up">
+          <span class="overline">Get In Touch</span>
+          <h2 class="section-title">Let's Create <span class="highlight">Together</span></h2>
+      </div>
+
+      <div class="contact-wrapper">
+          <!-- Contact Info -->
+          <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
+              <div class="info-card">
+                  <div class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                  </div>
+                  <h3>Call Me</h3>
+                  <p>+1 (234) 567-8900</p>
+              </div>
+
+              <div class="info-card">
+                  <div class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                  </div>
+                  <h3>Email</h3>
+                  <p>hello@example.com</p>
+              </div>
+
+              <div class="info-card">
+                  <div class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                  </div>
+                  <h3>Location</h3>
+                  <p>New York, NY 10001</p>
+              </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form" data-aos="fade-left" data-aos-delay="200">
+              <form id="contactForm" class="form">
+                  <div class="form-group">
+                      <input type="text" id="name" name="name" required class="form-control">
+                      <label for="name">Your Name</label>
+                  </div>
+
+                  <div class="form-group">
+                      <input type="email" id="email" name="email" required class="form-control">
+                      <label for="email">Your Email</label>
+                  </div>
+
+                  <div class="form-group">
+                      <input type="text" id="subject" name="subject" required class="form-control">
+                      <label for="subject">Subject</label>
+                  </div>
+
+                  <div class="form-group">
+                      <textarea id="message" name="message" required class="form-control"></textarea>
+                      <label for="message">Your Message</label>
+                  </div>
+
+                  <button type="submit" class="submit-btn">
+                      <span>Send Message</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                  </button>
+              </form>
           </div>
       </div>
   </div>
 </section>
-<!-- Testimonials Slider -->
+<!-- End of Contact Section -->
 
-<!-- ----- Contact Section ------ -->
-<div class="site-section"  data-aos="fade"></div>
-<div class="container">
+<!-- Footer Section -->
+<footer class="footer-section">
+  <div class="footer-content">
+      <!-- Company Info Section -->
+      <div class="footer-main" data-aos="fade-up">
+          <div class="footer-brand">
+              <h2 class="brand-name">MK</h2>
+              <p class="brand-description">With a passion for visual storytelling, I transform fleeting moments into timeless memories. Based in Tanzania, my lens captures the raw beauty of nature and authentic human connections.</p>
+              <div class="social-links">
+                  <a href="#" class="social-link" aria-label="Twitter">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                      </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                          <rect x="2" y="9" width="4" height="12"></rect>
+                          <circle cx="4" cy="4" r="2"></circle>
+                      </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="Instagram">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="GitHub">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                      </svg>
+                  </a>
+              </div>
+          </div>
 
-  <div class="row justify-content-center">
+          <!-- Quick Links -->
+          <div class="footer-links-group" data-aos="fade-up" data-aos-delay="100">
+              <h3>Quick Links</h3>
+              <ul class="footer-links">
+                  <li><a href="#about">About Us</a></li>
+                  <li><a href="#services">Services</a></li>
+                  <li><a href="#portfolio">Portfolio</a></li>
+                  <li><a href="#contact">Contact</a></li>
+              </ul>
+          </div>
 
-    <div class="col-md-7">
-      <div class="row mb-5">
-        <div class="col-12 ">
-          <h2 class="site-section-heading text-center">Contact</h2>
-        </div>
+          <!-- Services -->
+          <div class="footer-links-group" data-aos="fade-up" data-aos-delay="200">
+              <h3>Services</h3>
+              <ul class="footer-links">
+                  <li><a href="#web-design">Web Design</a></li>
+                  <li><a href="#development">Development</a></li>
+                  <li><a href="#branding">Branding</a></li>
+                  <li><a href="#marketing">Marketing</a></li>
+              </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="300">
+              <h3>Newsletter</h3>
+              <p>Subscribe to our newsletter for updates and insights.</p>
+              <form class="newsletter-form" id="newsletterForm">
+                  <div class="form-group">
+                      <input type="email" placeholder="Enter your email" required>
+                      <button type="submit" class="subscribe-btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                              <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                      </button>
+                  </div>
+              </form>
+          </div>
       </div>
-    </div>
 
-  </div>
-  
-  <div class="row">
-    <div class="col-lg-8 mb-5">
-      <form action="#">
-
-
-        <div class="row form-group">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <label class="text-white" for="fname">First Name</label>
-            <input type="text" id="fname" class="form-control">
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+          <div class="copyright" data-aos="fade-right">
+              <p>&copy; 2024 MK. All rights reserved.</p>
           </div>
-          <div class="col-md-6">
-            <label class="text-white" for="lname">Last Name</label>
-            <input type="text" id="lname" class="form-control">
+          <div class="legal-links" data-aos="fade-left">
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#terms">Terms of Service</a>
+              <a href="#cookies">Cookie Policy</a>
           </div>
-        </div>
-
-        <div class="row form-group">
-
-          <div class="col-md-12">
-            <label class="text-white" for="email">Email</label> 
-            <input type="email" id="email" class="form-control">
-          </div>
-        </div>
-
-        <div class="row form-group">
-
-          <div class="col-md-12">
-            <label class="text-white" for="subject">Subject</label> 
-            <input type="subject" id="subject" class="form-control">
-          </div>
-        </div>
-
-        <div class="row form-group">
-          <div class="col-md-12">
-            <label class="text-white" for="message">Message</label> 
-            <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
-          </div>
-        </div>
-
-        <div class="row form-group">
-          <div class="col-md-12">
-            <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
-          </div>
-        </div>
-
-
-      </form>
-    </div>
-    <div class="col-lg-3 ml-auto">
-      <div class="mb-3">
-        <p class="mb-0 font-weight-bold text-white">Address</p>
-        <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
-
-        <p class="mb-0 font-weight-bold text-white">Phone</p>
-        <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
-
-        <p class="mb-0 font-weight-bold text-white">Email Address</p>
-        <p class="mb-0"><a href="#">youremail@domain.com</a></p>
-
       </div>
-
-    </div>
-  </div>
-</div>
-</div>
-<!-- ----- Contact Section ------ -->
-
-
-
   </div>
 
+  <!-- Background Animation -->
+  <div class="footer-background">
+      <div class="gradient-overlay"></div>
+  </div>
+</footer>
+
+
+
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
@@ -1661,6 +2248,7 @@
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/swiper.min.js"></script>
   <script src="js/aos.js"></script>
+  
 
   <script src="js/picturefill.min.js"></script>
   <script src="js/lightgallery-all.min.js"></script>
@@ -1737,45 +2325,105 @@
   });
 </script>
 
+<!-- Initialize Swiper -->
 <script>
-  // Initialize Swiper for testimonials
   document.addEventListener('DOMContentLoaded', function() {
-      const testimonialSwiper = new Swiper('.testimonials-slider .swiper-container', {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          loop: true,
-          autoplay: {
-              delay: 5000,
-              disableOnInteraction: false,
-          },
-          pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-          },
-          breakpoints: {
-              768: {
-                  slidesPerView: 2,
-              },
-              1024: {
-                  slidesPerView: 3,
-              },
-          },
-          on: {
-              init: function() {
-                  // Add GSAP animations to testimonial cards
-                  gsap.from('.testimonial-card', {
-                      y: 50,
-                      opacity: 0,
-                      duration: 1,
-                      stagger: 0.2,
-                      ease: 'power3.out',
-                      scrollTrigger: {
-                          trigger: '.testimonials-section',
-                          start: 'top center+=100',
-                      }
-                  });
-              },
-          },
+      const slider = document.getElementById('testimonialSlider');
+      const cards = slider.querySelectorAll('.testimonial-card');
+      const dotsContainer = document.getElementById('testimonialDots');
+      let currentIndex = 0;
+  
+      // Create dots
+      cards.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          if (index === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+      });
+  
+      // Update active states
+      function updateActiveStates() {
+          cards.forEach((card, index) => {
+              card.classList.toggle('active', index === currentIndex);
+          });
+          
+          const dots = dotsContainer.querySelectorAll('.dot');
+          dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === currentIndex);
+          });
+      }
+  
+      // Go to specific slide
+      function goToSlide(index) {
+          currentIndex = index;
+          const scrollPosition = cards[index].offsetLeft - (slider.offsetWidth - cards[index].offsetWidth) / 2;
+          slider.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+          });
+          updateActiveStates();
+      }
+  
+      // Handle scroll events
+      let scrollTimeout;
+      slider.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+              const scrollPosition = slider.scrollLeft;
+              const newIndex = Math.round(scrollPosition / (cards[0].offsetWidth + 30));
+              if (newIndex !== currentIndex) {
+                  currentIndex = newIndex;
+                  updateActiveStates();
+              }
+          }, 100);
+      });
+  
+      // Initialize first slide
+      updateActiveStates();
+  
+      // Auto-play functionality
+      let autoPlayInterval;
+      
+      function startAutoPlay() {
+          autoPlayInterval = setInterval(() => {
+              currentIndex = (currentIndex + 1) % cards.length;
+              goToSlide(currentIndex);
+          }, 5000);
+      }
+  
+      function stopAutoPlay() {
+          clearInterval(autoPlayInterval);
+      }
+  
+      // Start auto-play and handle hover events
+      startAutoPlay();
+      slider.addEventListener('mouseenter', stopAutoPlay);
+      slider.addEventListener('mouseleave', startAutoPlay);
+  
+      // Handle touch events
+      slider.addEventListener('touchstart', stopAutoPlay);
+      slider.addEventListener('touchend', startAutoPlay);
+  
+      // Add animation to testimonial cards on scroll
+      const observerOptions = {
+          threshold: 0.2
+      };
+  
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, observerOptions);
+  
+      cards.forEach(card => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'all 0.6s ease';
+          observer.observe(card);
       });
   });
   </script>
@@ -1902,6 +2550,260 @@
 });
 </script>
 
+<script>
+  // Intersection Observer for scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+
+    // Form animations
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach((group, index) => {
+        group.style.opacity = '0';
+        group.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            group.style.transition = 'all 0.5s ease';
+            group.style.opacity = '1';
+            group.style.transform = 'translateY(0)';
+        }, 200 * (index + 1));
+    });
+
+    // Form submission animation
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.submit-btn');
+        submitBtn.style.width = `${submitBtn.offsetWidth}px`; // Preserve width
+        
+        // Add loading state
+        submitBtn.innerHTML = '<span class="loading"></span>';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission (replace with actual form submission)
+        setTimeout(() => {
+            submitBtn.innerHTML = `
+                <span>Message Sent!</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            `;
+            
+            // Reset form after delay
+            setTimeout(() => {
+                contactForm.reset();
+                submitBtn.innerHTML = `
+                    <span>Send Message</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                `;
+                submitBtn.disabled = false;
+            }, 2000);
+        }, 1500);
+    });
+
+    // Info cards hover effect
+    const infoCards = document.querySelectorAll('.info-card');
+    infoCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.icon');
+            icon.style.transform = 'scale(1.1) rotate(5deg)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.icon');
+            icon.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+});
+
+// Add loading animation styles
+const style = document.createElement('style');
+style.textContent = `
+    .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 50%;
+        border-top-color: var(--black);
+        animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.subscribe-btn');
+        const originalContent = submitBtn.innerHTML;
+        
+        // Add loading state
+        submitBtn.innerHTML = '<span class="loading"></span>';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission
+        setTimeout(() => {
+            submitBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            `;
+            
+            // Reset form after delay
+            setTimeout(() => {
+                newsletterForm.reset();
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+            }, 2000);
+        }, 1500);
+    });
+
+    // Social links hover animation
+    const socialLinks = document.querySelectorAll('.social-link');
+    
+    socialLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) rotate(5deg)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) rotate(0)';
+        });
+    });
+
+    // Footer links animation
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.color = '#e6c08f';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+            this.style.color = 'rgba(255, 255, 255, 0.7)';
+        });
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Animate footer sections on scroll
+    const footerSections = document.querySelectorAll('.footer-main > div, .footer-bottom > div');
+    
+    footerSections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.6s ease';
+        observer.observe(section);
+    });
+
+    // Background gradient animation
+    const gradientOverlay = document.querySelector('.gradient-overlay');
+    
+    function updateGradient() {
+        const scrollPosition = window.scrollY;
+        const rotationDegree = (scrollPosition * 0.1) % 360;
+        gradientOverlay.style.transform = `rotate(${rotationDegree}deg)`;
+    }
+
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateGradient);
+    });
+
+    // Add ripple effect to buttons
+    const buttons = document.querySelectorAll('.subscribe-btn, .social-link');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size/2;
+            const y = e.clientY - rect.top - size/2;
+            
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // Add CSS for ripple effect
+    const style = document.createElement('style');
+    style.textContent = `
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0,0,0,0.3);
+            border-radius: 50%;
+            border-top-color: var(--black);
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
 
 
 <a href="https://wa.me/+255653431529" class="whatsapp-btn" target="_blank">
